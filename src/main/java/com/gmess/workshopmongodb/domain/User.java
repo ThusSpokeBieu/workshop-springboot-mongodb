@@ -7,10 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serial;
 import java.io.Serializable;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
+@Data
 @EqualsAndHashCode
 @Document(collection="user")
 public class User implements Serializable {
@@ -20,4 +18,8 @@ public class User implements Serializable {
     @Id
     private String id;
     private String name, email;
+
+    public static void main(String[] args) {
+        User user = User.builder().name("Jim Green").email("jimgreen@email.com").build();
+    }
 }

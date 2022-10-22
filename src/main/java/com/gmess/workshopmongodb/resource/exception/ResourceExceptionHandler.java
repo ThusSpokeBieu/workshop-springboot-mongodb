@@ -1,6 +1,6 @@
-package com.gmess.workshopmongodb.resources.exception;
+package com.gmess.workshopmongodb.resource.exception;
 
-import com.gmess.workshopmongodb.services.exception.ObjectNotFoundException;
+import com.gmess.workshopmongodb.service.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

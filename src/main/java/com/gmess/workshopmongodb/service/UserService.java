@@ -1,8 +1,8 @@
-package com.gmess.workshopmongodb.services;
+package com.gmess.workshopmongodb.service;
 
 import com.gmess.workshopmongodb.domain.User;
 import com.gmess.workshopmongodb.repository.UserRepository;
-import com.gmess.workshopmongodb.services.exception.ObjectNotFoundException;
+import com.gmess.workshopmongodb.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

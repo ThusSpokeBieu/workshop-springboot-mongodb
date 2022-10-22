@@ -1,8 +1,8 @@
-package com.gmess.workshopmongodb.resources;
+package com.gmess.workshopmongodb.resource;
 
 import com.gmess.workshopmongodb.domain.User;
 import com.gmess.workshopmongodb.dto.UserDTO;
-import com.gmess.workshopmongodb.services.UserService;
+import com.gmess.workshopmongodb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

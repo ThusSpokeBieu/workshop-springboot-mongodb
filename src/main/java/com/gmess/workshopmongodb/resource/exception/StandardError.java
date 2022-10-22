@@ -1,4 +1,4 @@
-package com.gmess.workshopmongodb.resources.exception;
+package com.gmess.workshopmongodb.resource.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

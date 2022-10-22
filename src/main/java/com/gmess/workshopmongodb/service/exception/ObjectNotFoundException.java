@@ -1,4 +1,4 @@
-package com.gmess.workshopmongodb.services.exception;
+package com.gmess.workshopmongodb.service.exception;
 
 import java.io.Serial;
 
