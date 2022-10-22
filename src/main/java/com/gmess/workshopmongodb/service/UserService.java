@@ -1,6 +1,8 @@
 package com.gmess.workshopmongodb.service;
 
 import com.gmess.workshopmongodb.domain.User;
+import com.gmess.workshopmongodb.dto.UserDTO;
+import com.gmess.workshopmongodb.mapper.UserMapper;
 import com.gmess.workshopmongodb.repository.UserRepository;
 import com.gmess.workshopmongodb.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class UserService {
     @Autowired
     private UserRepository repo;
 
+    @Autowired
+    UserMapper userMapper;
+
     public List<User> findAll(){
         return repo.findAll();
     }
@@ -23,4 +28,14 @@ public class UserService {
         Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found."));
     }
+
+    public User insert(User obj){
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto){
+        return userMapper.toEntity(objDto);
+    }
+
+
 }

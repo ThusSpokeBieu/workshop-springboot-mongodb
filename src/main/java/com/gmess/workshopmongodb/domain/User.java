@@ -18,8 +18,4 @@ public class User implements Serializable {
     @Id
     private String id;
     private String name, email;
-
-    public static void main(String[] args) {
-        User user = User.builder().name("Jim Green").email("jimgreen@email.com").build();
-    }
 }
