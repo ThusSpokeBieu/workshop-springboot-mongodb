@@ -9,7 +9,8 @@ import java.io.Serializable;
 
 @Builder
 @Data
-@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection="user")
 public class User implements Serializable {
 
