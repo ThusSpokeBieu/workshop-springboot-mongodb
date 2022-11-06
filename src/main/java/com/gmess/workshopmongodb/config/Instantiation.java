@@ -3,6 +3,7 @@ package com.gmess.workshopmongodb.config;
 import com.gmess.workshopmongodb.domain.Post;
 import com.gmess.workshopmongodb.domain.User;
 import com.gmess.workshopmongodb.dto.AuthorDTO;
+import com.gmess.workshopmongodb.dto.CommentDTO;
 import com.gmess.workshopmongodb.repository.PostRepository;
 import com.gmess.workshopmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,25 @@ public class Instantiation implements CommandLineRunner {
                 .body("I woke up so happy today!")
                 .author(new AuthorDTO(maria))
                 .build();
+
+        CommentDTO c1 = CommentDTO.builder()
+                .text("Have a nice trip!")
+                .date(sdf.parse("21/03/2018"))
+                .author(new AuthorDTO(alex))
+                .build();
+        CommentDTO c2 = CommentDTO.builder()
+                .text("Sao paulo is such a wonderful place!")
+                .date(sdf.parse("22/03/2018"))
+                .author(new AuthorDTO(bob))
+                .build();
+        CommentDTO c3 = CommentDTO.builder()
+                .text("what's up? :D")
+                .date(sdf.parse("23/03/2018"))
+                .author(new AuthorDTO(alex))
+                .build();
+        post1.setComments(Arrays.asList(c1,c2));
+        post2.setComments(Arrays.asList(c3));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
 
         maria.setPosts(Arrays.asList(post1, post2));
