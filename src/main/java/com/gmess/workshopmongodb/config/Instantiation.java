@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
@@ -31,9 +32,9 @@ public class Instantiation implements CommandLineRunner {
         userRepository.deleteAll();
         postRepository.deleteAll();
 
-        User maria = User.builder().name("Maria Brown").email("mariabrown@email.com").build();
-        User alex = User.builder().name("Alex Green").email("alex@gmail.com").build();
-        User bob = User.builder().name("Bob Grey").email("bob@gmail.com").build();
+        User maria = User.builder().name("Maria Brown").email("mariabrown@email.com").posts(new ArrayList<>()).build();
+        User alex = User.builder().name("Alex Green").email("alex@gmail.com").posts(new ArrayList<>()).build();
+        User bob = User.builder().name("Bob Grey").email("bob@gmail.com").posts(new ArrayList<>()).build();
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
         Post post1 = Post.builder()
@@ -41,12 +42,14 @@ public class Instantiation implements CommandLineRunner {
                 .title("Going to a travel!")
                 .body("See ya soon, Sao Paulo - Brazil!")
                 .author(new AuthorDTO(maria))
+                .comments(new ArrayList<>())
                 .build();
         Post post2 =  Post.builder()
                 .date(sdf.parse("23/03/2018"))
                 .title("Good morning!")
                 .body("I woke up so happy today!")
                 .author(new AuthorDTO(maria))
+                .comments(new ArrayList<>())
                 .build();
 
         CommentDTO comment1 = CommentDTO.builder()
@@ -64,12 +67,12 @@ public class Instantiation implements CommandLineRunner {
                 .date(sdf.parse("23/03/2018"))
                 .author(new AuthorDTO(alex))
                 .build();
-        post1.setComments(Arrays.asList(comment1,comment2));
-        post2.setComments(Arrays.asList(comment3));
+        post1.getComments().addAll(Arrays.asList(comment1, comment2));
+        post2.getComments().addAll(Arrays.asList(comment3));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
-        maria.setPosts(Arrays.asList(post1, post2));
+        maria.getPosts().addAll(Arrays.asList(post1, post2));
         userRepository.save(maria);
     }
 }

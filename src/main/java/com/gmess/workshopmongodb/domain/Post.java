@@ -14,9 +14,7 @@ import java.util.List;
 
 @Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Document
+@Document(collection="post")
 public class Post implements Serializable {
     @Serial
     private static final long serialVersionUID = -6723610263245096434L;
@@ -27,13 +25,5 @@ public class Post implements Serializable {
     private String title, body;
     private AuthorDTO author;
 
-    private List<CommentDTO> comments = new ArrayList<>();
-
-    public Post(String id, Date date, String title, String body, AuthorDTO author){
-        this.id = id;
-        this.date = date;
-        this.title = title;
-        this.body = body;
-        this.author = author;
-    }
+    private List<CommentDTO> comments;
 }

@@ -7,13 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Document(collection="user")
 public class User implements Serializable {
 
@@ -23,5 +20,5 @@ public class User implements Serializable {
     private String id;
     private String name, email;
     @DBRef(lazy = true)
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> posts;
 }
