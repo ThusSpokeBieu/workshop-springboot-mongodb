@@ -23,6 +23,11 @@ public class PostResources {
     @Autowired
     private PostService service;
 
+    @GetMapping
+    public ResponseEntity<List<Post>> findAll(){
+        List<Post> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public ResponseEntity<Post> findById(@PathVariable String id){
