@@ -49,23 +49,23 @@ public class Instantiation implements CommandLineRunner {
                 .author(new AuthorDTO(maria))
                 .build();
 
-        CommentDTO c1 = CommentDTO.builder()
+        CommentDTO comment1 = CommentDTO.builder()
                 .text("Have a nice trip!")
                 .date(sdf.parse("21/03/2018"))
                 .author(new AuthorDTO(alex))
                 .build();
-        CommentDTO c2 = CommentDTO.builder()
+        CommentDTO comment2 = CommentDTO.builder()
                 .text("Sao paulo is such a wonderful place!")
                 .date(sdf.parse("22/03/2018"))
                 .author(new AuthorDTO(bob))
                 .build();
-        CommentDTO c3 = CommentDTO.builder()
+        CommentDTO comment3 = CommentDTO.builder()
                 .text("what's up? :D")
                 .date(sdf.parse("23/03/2018"))
                 .author(new AuthorDTO(alex))
                 .build();
-        post1.setComments(Arrays.asList(c1,c2));
-        post2.setComments(Arrays.asList(c3));
+        post1.setComments(Arrays.asList(comment1,comment2));
+        post2.setComments(Arrays.asList(comment3));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
