@@ -13,4 +13,5 @@ The following technologies were used for learning proposal:
 - Postman
 - Lombok
 - MapStruct
+- jQuery
  
