@@ -4,16 +4,19 @@ import com.gmess.workshopmongodb.dto.AuthorDTO;
 import com.gmess.workshopmongodb.dto.CommentDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Builder
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection="post")
 public class Post implements Serializable {
     @Serial
@@ -24,6 +27,5 @@ public class Post implements Serializable {
     private Date date;
     private String title, body;
     private AuthorDTO author;
-
     private List<CommentDTO> comments;
 }
