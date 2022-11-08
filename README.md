@@ -47,9 +47,9 @@ Example
 http://localhost:8080/posts/titlesearch?text=good
 ```
 
-You can also do full queries in post with /fullsearch?text=<b>{textToSearch}</b>.<br>
+You can also do full queries in post with /fullsearch?text=<b>{textToSearch}</b>&minDate=<b>{yyyy-MM-dd}</b>&maxDate=<b>{yyyy-MM-dd}</b>.<br>
 ```bash
 Example
-http://localhost:8080/posts/fullsearch?text=See%20ya%20soon
+http://localhost:8080/posts/fullsearch?text=see%20ya%20soon&minDate=2015-01-15&maxDate=2022-11-08
 ```
 
