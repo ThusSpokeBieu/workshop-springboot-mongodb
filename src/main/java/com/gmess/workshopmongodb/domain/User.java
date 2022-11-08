@@ -10,7 +10,10 @@ import java.io.Serializable;
 import java.util.List;
 
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection="user")
 public class User implements Serializable {
 

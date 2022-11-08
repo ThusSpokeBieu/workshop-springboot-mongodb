@@ -2,6 +2,7 @@ package com.gmess.workshopmongodb.resource;
 
 import com.gmess.workshopmongodb.domain.Post;
 import com.gmess.workshopmongodb.domain.User;
+import com.gmess.workshopmongodb.dto.PostDTO;
 import com.gmess.workshopmongodb.dto.UserDTO;
 import com.gmess.workshopmongodb.mapper.UserMapper;
 import com.gmess.workshopmongodb.service.PostService;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -55,4 +57,29 @@ public class PostResources {
         List<Post> list = service.fullSearch(text, min, max);
         return ResponseEntity.ok().body(list);
     }
+
+    @PostMapping
+    public ResponseEntity<Void> insert(@RequestBody PostDTO objDto){
+        Calendar calendar = Calendar.getInstance();
+        objDto.setDate(calendar.getTime());
+        Post obj = service.fromDTO(objDto);
+        obj = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody PostDTO objDto, @PathVariable String id){
+        Post obj = service.fromDTO(objDto);
+        obj.setId(id);
+        obj = service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
 }
